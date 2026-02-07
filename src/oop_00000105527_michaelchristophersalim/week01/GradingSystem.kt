@@ -1,5 +1,7 @@
 package oop_00000105527_michaelchristophersalim.week01
 
+fun calculateStatus(score: Int) = if (score > 75) "Lulus" else "Tidak Lulus"
+
 fun.main(){
     // REFACTOR: Gunakan val dan hapus tipe data eksplisit
     val name: String = "John Thor"
@@ -17,4 +19,13 @@ fun.main(){
     }
 
     println("Grade kamu: $grade")
+    println("Status: ${calculateStatus(score)}")
+
+    //Tambahan Null Safety
+    val studentId: String? = null
+
+    //if null, gunakan nilai default 0
+    val idLength = studentId?.length ?: 0
+
+    println("Panjang ID: $idLength")
 }
