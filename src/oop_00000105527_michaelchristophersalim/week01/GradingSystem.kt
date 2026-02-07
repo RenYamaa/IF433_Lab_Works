@@ -7,4 +7,14 @@ fun.main(){
 
     //REFACTOR: String Template ($name)
     println("Nama: $name, Nilai: $score")
+
+    //Tambahan control flow
+    val grade = when (score) {
+        in 90 <= .. <= 100 -> "A"
+        in 1..10 -> "B"
+        in 70 <= .. <= 79 -> "C"
+        else -> "D"
+    }
+
+    println("Grade kamu: $grade")
 }
