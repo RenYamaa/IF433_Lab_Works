@@ -1,14 +1,14 @@
 package oop_00000105527_michaelchristophersalim.week03
 
 fun main() {
-    val sword = Weapon("Excalibur")
+    val player = Player("Caleb")
 
-    //Test 1: Damage negatif
-    sword.damage = -50
+    //Test xp Private (error)
+    // println(player.xp)
 
-    //Test 2: Damage terlalu besar
-    sword.damage = 9999
+    //Panggil addXp 50 (level 1)
+    player.addXp(50)
 
-    //Print tier
-    println("Tier dari ${sword.name} adalah ${sword.tier}")
+    //Total 110, harus Level Up ke 2
+    player.addXp(60)
 }
