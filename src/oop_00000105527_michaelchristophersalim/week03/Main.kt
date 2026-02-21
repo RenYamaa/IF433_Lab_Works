@@ -1,14 +1,14 @@
 package oop_00000105527_michaelchristophersalim.week03
 
 fun main() {
-    val e = Employee("Budi")
-    e.salary = -1000
-    e.salary = 50000000
-    println("Gaji: ${e.salary}")
+    val sword = Weapon("Excalibur")
 
-    // 2. Test Encapsulation
-    e.increasePerformance()
+    //Test 1: Damage negatif
+    sword.damage = -50
 
-    // 3. Test Computed Property
-    println("Pajak yang harus dibayar: ${e.tax}")
+    //Test 2: Damage terlalu besar
+    sword.damage = 9999
+
+    //Print tier
+    println("Tier dari ${sword.name} adalah ${sword.tier}")
 }
