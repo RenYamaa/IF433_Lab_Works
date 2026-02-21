@@ -13,7 +13,7 @@ class Employee(val name: String) {
     //Private hanya bisa diakses di file/class ini saja
     private var performanceRating: Int = 3
 
-    fun increasePerformancec() {
+    fun increasePerformance() {
         performanceRating++
         println("Kinerja $name meningkat! Rating: $performanceRating")
     }
@@ -23,4 +23,7 @@ class Employee(val name: String) {
     fun printStatus() {
         println("Karyawan: $name, Rating: $performanceRating")
     }
+
+    val tax: Double
+        get() = salary * 0.1
 }
