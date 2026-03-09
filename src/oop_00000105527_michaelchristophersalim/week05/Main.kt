@@ -43,12 +43,21 @@ fun main(){
     // TUGAS MANDIRI 1
     // =========================
 
-    val ewallet = Ewallet("Michael", 50000.0)
+    val Ewallet = Ewallet("Michael", 50000.0)
     val creditCard = CreditCard("Mikel", 100000.0)
 
-    val metodePembayaran: List<PaymentMethod> = listOf(ewallet, creditCard)
+    val metodePembayaran: List<PaymentMethod> = listOf(Ewallet, creditCard)
 
     for (method in metodePembayaran){
+
         method.processPayment(75000.0)
+
+        if(method is Ewallet){
+            println("Saldo kurang, melakukan top up otomatis...")
+            method.topUp(50000.0)
+            method.processPayment(75000.0)
+        }
+
+        println("-------------------------")
     }
 }
