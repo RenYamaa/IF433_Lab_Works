@@ -38,4 +38,17 @@ fun main(){
     println("Luas Persegi: ${math.hitungLuas(4)}")
     println("Luas Persegi Panjang: ${math.hitungLuas(5,3)}")
     println("Luas Lingkaran: ${math.hitungLuas(7.0)}")
+
+    // =========================
+    // TUGAS MANDIRI 1
+    // =========================
+
+    val ewallet = Ewallet("Michael", 50000.0)
+    val creditCard = CreditCard("Mikel", 100000.0)
+
+    val metodePembayaran: List<PaymentMethod> = listOf(ewallet, creditCard)
+
+    for (method in metodePembayaran){
+        method.processPayment(75000.0)
+    }
 }
