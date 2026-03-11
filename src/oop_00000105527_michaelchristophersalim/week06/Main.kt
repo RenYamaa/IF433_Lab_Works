@@ -30,4 +30,22 @@ fun main() {
 
     val cctv = SmartCCTV("C001", "Ezviz Garasi")
 
+    // Instansiasi Smart Home Hub
+    val hub = SmartHomeHub()
+
+    // Menambahkan perangkat ke hub
+    hub.addDevice(lamp)
+    hub.addDevice(speaker)
+    hub.addDevice(cctv)
+
+    println()
+
+    // Aktifkan mode keamanan
+    hub.activateSecurityMode()
+
+    println()
+
+    // Matikan semua perangkat yang bisa dimatikan
+    hub.turnOffAllSwitches()
+
 }
