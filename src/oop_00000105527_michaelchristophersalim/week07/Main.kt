@@ -20,4 +20,10 @@ fun main() {
     val data2 = DataUser("Alice", 22)
     println(data1)
     println("Sama? ${data1 == data2}") // True (Structural equality
+
+    val data3 = data1.copy(age = 23)
+    println("Hasil copy: $data3")
+
+    val (userName, userAge) = data1
+    println("Destructured: $userName berumur $userAge")
 }
