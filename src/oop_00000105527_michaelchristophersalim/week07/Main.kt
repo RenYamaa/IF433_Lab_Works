@@ -28,7 +28,9 @@ fun main() {
     println("Destructured: $userName berumur $userAge")
 
     println("\n=== TEST SEALED CLASS ===")
-    val response: ApiResponse = ApiResponse.Success("Data berhasil di tarik!")
+    val response: ApiResponse = ApiResponse.Success(
+        DataUser("Alice", 22)
+    )
 
     val uiMessage = when(response) {
         is ApiResponse.Success -> "Tampilkan: ${response.data}"
@@ -37,4 +39,8 @@ fun main() {
     }
 
     println(uiMessage)
+
+    println("\n=== TEST GAME MANAGER (SINGLETON) ===")
+    GameManager.startGame()
+    GameManager.startGame()
 }
