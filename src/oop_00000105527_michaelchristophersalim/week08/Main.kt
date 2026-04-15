@@ -57,4 +57,36 @@ fun main() {
     println("Status dari Java: $javaResponse (Length: $statusLength)")
 
     runMockUnitTest()
+
+    //Data kotor dari API sesuai skenario
+    val rawApiData: List<Map<String, Any?>> = listOf(
+        mapOf("id" to "E01", "name" to "Laptop", "type" to "ELECTRONIC", "warrantyMonths" to 24),
+        mapOf("id" to "C01", "name" to "T-Shirt", "type" to "CLOTHING", "size" to "XL"),
+        mapOf("id" to "E02", "name" to "Mouse", "type" to "ELECTRONIC", "warrantyMonths" to "Not An Integer"), // Corrupted warranty
+        mapOf("name" to "Ghost Item", "type" to "CLOTHING"), // Missing ID!
+        mapOf("id" to "X01", "name" to "Unknown", "type" to "FOOD") // Unknown type
+    )
+
+    val parser = ApiParser()
+
+    println("=== STARTING BATCH PROCESS ===\n")
+
+    for (raw in rawApiData) {
+        try {
+            // Memanggil parseProduct yang mengandung requireNotNull
+            val product = parser.parseProduct(raw)
+
+            // Menggunakan ?.let untuk memproses hanya jika hasil parse tidak null
+            product?.let {
+                parser.checkout(it)
+            } ?: println("SKIP: Tipe produk '${raw["type"]}' tidak didukung.")
+
+        } catch (e: IllegalArgumentException) {
+            // Menangkap error dari requireNotNull (seperti Ghost Item yang tidak punya ID)
+            println("ALERT: Data korup ditemukan! -> ${e.message}")
+        }
+        println("------------------------------")
+    }
+
+    println("\n=== BATCH PROCESS FINISHED ===")
 }
