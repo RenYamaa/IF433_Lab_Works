@@ -89,4 +89,5 @@ fun main() {
     }
 
     println("\n=== BATCH PROCESS FINISHED ===")
+    //Sudah di test.
 }
