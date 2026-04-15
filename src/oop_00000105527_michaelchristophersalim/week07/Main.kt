@@ -46,11 +46,11 @@ fun main() {
 
     println("\n=== TEST ENUM & FACTORY ===")
     println("Drop chance LEGENDARY: ${ItemRarity.LEGENDARY.dropChance}%")
-    val starterWeapon = Weapon.forgeStarterSword()
-    println("Starter Weapon: ${starterWeapon.item.name}")
-    println("Damage: ${starterWeapon.item.damage}")
-    println("Rarity: ${starterWeapon.item.rarity}")
-    println("Durability: ${starterWeapon.durability}")
+    val starterWeapon2 = Weapon.forgeStarterSword()
+    println("Starter Weapon: ${starterWeapon2.item.name}")
+    println("Damage: ${starterWeapon2.item.damage}")
+    println("Rarity: ${starterWeapon2.item.rarity}")
+    println("Durability: ${starterWeapon2.durability}")
 
     println("\n=== TEST IMMUTABILITY & EVENT FLOW ===")
     val starterWeapon = Weapon.forgeStarterSword()
