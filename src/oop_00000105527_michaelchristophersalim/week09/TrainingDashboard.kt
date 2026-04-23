@@ -30,4 +30,8 @@ fun main(){
         .map { trade ->
             "LOSS [${trade.pair} - ${trade.position}]: ${trade.roe}% ROE (Lev: ${trade.leverage}x)"
         }
+
+    val uniquePairs = tradeHistory
+        .map { it.pair }
+        .toSet()
 }
