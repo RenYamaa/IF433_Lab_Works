@@ -38,12 +38,14 @@ fun main(){
     // Dashboard Utama
     println("=== CRYPTO TRADING DASHBOARD ===")
 
-    println("\n --- Top Performers ---")
+    println("\n--- Top Performers ---")
     topPerformersString.forEach { println(it) }
 
-    println("\n --- Worst Performers ---")
+    println("\n--- Worst Performers ---")
     worstPerformersString.forEach { println(it) }
 
-    println("\n --- Trade Pairs ---")
+    println("\n--- Trade Pairs ---")
     uniquePairs.forEach { println(it) }
+
+    //Already Tested.
 }
