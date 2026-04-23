@@ -1,0 +1,12 @@
+package oop_00000105527_michaelchristophersalim.week09
+
+fun main(){
+    val tradeHistory = listOf(
+        TradeLog("BTCUSDT", "LONG", 10, 5.2, "CLOSED"),   // profit
+        TradeLog("BTCUSDT", "SHORT", 5, -2.1, "CLOSED"),  // loss
+        TradeLog("ETHUSDT", "LONG", 8, 3.5, "CLOSED"),    // profit
+        TradeLog("ETHUSDT", "SHORT", 10, -1.8, "OPEN"),   // masih open
+        TradeLog("BTCUSDT", "LONG", 3, 0.0, "OPEN"),      // break even, open
+        TradeLog("ETHUSDT", "LONG", 6, 7.0, "CLOSED")
+    )
+}
