@@ -6,5 +6,5 @@ fun main(){
     val stringBox = Box("Generics in Kotlin")
 
     println("Isi intBox: ${intBox.value}")
-    println("Isi stringBox: ${stringBox.value}"statn)
+    println("Isi stringBox: ${stringBox.value}")
 }
