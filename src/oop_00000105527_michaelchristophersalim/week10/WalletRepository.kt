@@ -1,6 +1,6 @@
 package oop_00000105527_michaelchristophersalim.week10
 
-class WalletRepository<T : HasName> {
+class WalletRepository<T> {
 
     private val items = mutableListOf<T>()
 
@@ -12,8 +12,10 @@ class WalletRepository<T : HasName> {
         return items
     }
 
-    //Karena opsional untuk constraint <T: Any>, saya pakai HasName saja
+    // khusus untuk yang punya name
     fun findByName(name: String): List<T> {
-        return items.filter { it.name == name }
+        return items.filter {
+            (it as? HasName)?.name == name
+        }
     }
 }
