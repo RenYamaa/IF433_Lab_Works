@@ -17,4 +17,13 @@ fun main(){
         println("(LOG) Kamera terhubung")
         homeDevices.add(it)
     }
+
+    val acInverter = run {
+        val device = SmartDevice("Daikin Inverter (Kabel 3x2.5)", "HVAC", false, 800)
+        // Baris terakhir ini yang akan di-return dan ditangkap oleh variabel acInverter
+        device
+    }
+    homeDevices.add(acInverter)
+
+    homeDevices.add(SmartDevice("Picolo's Auto Feeder", "Pet Care", true, 10))
 }
