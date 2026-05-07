@@ -26,4 +26,11 @@ fun main(){
     homeDevices.add(acInverter)
 
     homeDevices.add(SmartDevice("Picolo's Auto Feeder", "Pet Care", true, 10))
+
+    val searchResult = homeDevices.find { it.category == "Camera" }
+
+    searchResult?.let {
+        println("\n--- Hasil Pencarian Kamera ---")
+        println(it.diagnose())
+    }
 }
