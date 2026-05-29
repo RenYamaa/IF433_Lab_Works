@@ -3,6 +3,10 @@ package oop_00000105527_michaelchristophersalim.week12
 fun dispenseKibble(requestedGram: Int, availableGram: Int, isJammed: Boolean): Int {
     require(requestedGram > 0) { "Porsi kibble harus lebih dari 0 gr" }
 
-    // Placeholder return dulu biar nggak error
+    if (isJammed) {
+        throw DispenserJamException()
+    }
+
+    // Placeholder
     return availableGram
 }
