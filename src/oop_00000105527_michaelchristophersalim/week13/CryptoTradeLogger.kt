@@ -12,14 +12,18 @@ data class TradeRecord(
 
 fun TradeRecord.toCsv(): String = "$id,$symbol,$type,$margin,$pnl"
 
-// 3. Deserialization Parsing (Belum ada Error Handling)
-fun fromCsvTrade(line: String): TradeRecord {
-    val parts = line.split(",")
-    return TradeRecord(
-        id = parts[0].toInt(),
-        symbol = parts[1],
-        type = parts[2],
-        margin = parts[3].toDouble(),
-        pnl = parts[4].toDouble()
-    )
+fun fromCsvTrade(line: String): TradeRecord? {
+    return try {
+        val parts = line.split(",")
+        TradeRecord(
+            id = parts[0].toInt(),
+            symbol = parts[1],
+            type = parts[2],
+            margin = parts[3].toDouble(),
+            pnl = parts[4].toDouble()
+        )
+    } catch (e: Exception) { // Menangkap NumberFormatException, IndexOutOfBounds, dll
+        println("(Log) Data korup diabaikan: $line")
+        null
+    }
 }
