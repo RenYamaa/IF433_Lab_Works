@@ -1,3 +1,20 @@
 package oop_00000105527_michaelchristophersalim.week14
 
-//First Commit
+data class User(val name: String, val email: String, val age: Int)
+
+class UserManager {
+    // Business logic
+    fun validateUser(user: User): Boolean {
+        return user.email.contains("@") && user.age >= 18
+    }
+
+    // Database access
+    fun saveUserToDatabase(user: User) {
+        println("INSERT INTO users VALUES ('${user.name}', '${user.email}')")
+    }
+
+    // Email notification
+    fun sendWelcomeEmail(user: User) {
+        println("Sending email to: ${user.email}")
+    }
+}
