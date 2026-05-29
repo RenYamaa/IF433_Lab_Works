@@ -49,23 +49,41 @@ class EmailNotifier : NotificationService {
     }
 }
 
-// --- 3. Refactored Processor (Tahap 1) ---
+// --- 4. Fix OCP: Abstraksi Diskon ---
+interface PricingStrategy {
+    fun calculate(price: Double): Double
+}
+
+class RegularPricing : PricingStrategy {
+    override fun calculate(price: Double): Double = price
+}
+
+class VipPricing : PricingStrategy {
+    override fun calculate(price: Double): Double = price * 0.90
+}
+
+// --- 5. Final Refactored Processor ---
 class SafeOrderProcessor(
     val repo: OrderRepository,
     val notifier: NotificationService
 ) {
-    fun processOrder(itemName: String, basePrice: Double, customerType: String) {
-        // Blok when ini masih melanggar OCP, akan kita perbaiki di Checkpoint 20
-        val finalPrice = when (customerType) {
-            "REGULAR" -> basePrice
-            "VIP" -> basePrice * 0.90
-            else -> basePrice
-        }
+    // Fungsi processOrder dimodifikasi untuk menerima PricingStrategy
+    fun processOrder(itemName: String, basePrice: Double, customerType: String, pricingStrategy: PricingStrategy) {
+        // Kalkulasi harga diserahkan ke masing-masing class strategi
+        val finalPrice = pricingStrategy.calculate(basePrice)
 
         println("Memproses pesanan $itemName seharga $finalPrice")
 
-        // Panggil fungsi lewat interface (DIP)
         repo.saveOrder(itemName, finalPrice, customerType)
         notifier.sendNotification("Pesanan $itemName Anda telah dikonfirmasi!")
     }
+}
+
+fun main() {
+    val repo = CsvOrderRepository()
+    val notifier = EmailNotifier()
+    val processor = SafeOrderProcessor(repo, notifier)
+
+    processor.processOrder("Laptop", 10000.0, "REGULAR", RegularPricing())
+    processor.processOrder("Smartphone", 5000.0, "VIP", VipPricing())
 }
